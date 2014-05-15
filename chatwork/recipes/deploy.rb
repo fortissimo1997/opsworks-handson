@@ -4,6 +4,8 @@ node[:deploy].each do |application, deploy|
   return true if token.nil? || room.nil?
   return true if deploy[:scm].nil? || deploy[:deploying_user].nil?
   user = deploy[:deploying_user].split('/')[1]
+  return true if deploy[:notifying_nodes].nil?
+  return true if deploy[:notifying_nodes].kind_of?(Array)
   return true if deploy[:notifying_nodes].include?(node[:hostname])
 
   execute 'post notification to chatwork' do
