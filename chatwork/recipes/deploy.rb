@@ -1,3 +1,4 @@
+Log.logger.info node.to_s
 node[:deploy].each do |application, deploy|
   Log.logger.info deploy.to_s
   token = deploy[:chatwork_token]
