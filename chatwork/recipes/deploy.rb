@@ -1,4 +1,5 @@
 node[:deploy].each do |application, deploy|
+  Log.logger.info deploy.to_s
   token = deploy[:chatwork_token]
   room  = deploy[:chatwork_room_id]
   return true if token.nil? || room.nil?
