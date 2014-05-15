@@ -8,7 +8,7 @@ node[:deploy].each do |application, deploy|
   Log.logger.info deploy[:notifying_nodes]
   return true if deploy[:notifying_nodes].nil?
   return true unless deploy[:notifying_nodes].kind_of?(Array)
-  return true if deploy[:notifying_nodes].include?(node[:hostname])
+  return true if deploy[:notifying_nodes].include?(node[:opsworks][:instance][:hostname])
 
   execute 'post notification to chatwork' do
     command "curl -X POST -H \"X-ChatWorkToken: #{token}\" -d \"body=Application+#{application}+deployed+by+#{user}\" \"https://api.chatwork.com/v1/rooms/#{room}/messages\""
