@@ -1,5 +1,5 @@
-Log.logger.info node.to_s
 node[:deploy].each do |application, deploy|
+  Log.logger.info node.to_s
   Log.logger.info deploy.to_s
   token = deploy[:chatwork_token]
   room  = deploy[:chatwork_room_id]
